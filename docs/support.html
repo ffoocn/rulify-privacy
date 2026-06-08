@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rulify 技术支持 — 导入隐私报告、生成规则与常见问题。">
+  <title>Rulify 技术支持</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --accent: #0071e3;
+      --border: rgba(0, 0, 0, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card: #1c1c1e;
+        --text: #f5f5f7;
+        --muted: #98989d;
+        --border: rgba(255, 255, 255, 0.12);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    header { margin-bottom: 28px; }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .subtitle { color: var(--muted); font-size: 1rem; margin: 0; }
+    .nav { margin-top: 12px; font-size: 0.9375rem; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+    h2 { font-size: 1.125rem; font-weight: 600; margin: 0 0 10px; }
+    p, ul, ol { margin: 0; font-size: 1rem; }
+    ul, ol { padding-left: 1.25rem; }
+    li + li { margin-top: 6px; }
+    footer { margin-top: 24px; color: var(--muted); font-size: 0.875rem; }
+    a { color: var(--accent); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Rulify 技术支持</h1>
+      <p class="subtitle">在 iPhone / iPad 上解析 App 隐私报告，生成 Surge / Clash 等个人规则</p>
+      <p class="nav"><a href="index.html">隐私政策</a></p>
+    </header>
+
+    <section>
+      <h2>关于 Rulify</h2>
+      <p>
+        Rulify 帮助您导入 iOS 系统导出的 App 隐私报告（<code>.ndjson</code>），在设备本地整理 App、域名与访问记录，
+        并按 <code>ios_rule_script</code> 风格生成、导出或同步个人网络规则。数据处理默认仅在您的设备上完成。
+      </p>
+    </section>
+
+    <section>
+      <h2>系统要求</h2>
+      <ul>
+        <li>iOS / iPadOS 16.6 或更高版本</li>
+        <li>从「设置 → 隐私与安全性 → App 隐私报告」导出 <code>.ndjson</code> 文件</li>
+        <li>可选：GitHub 账号与 Personal Access Token（用于上传规则，非必需）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>快速上手</h2>
+      <ol>
+        <li>在 iOS 设置中导出 App 隐私报告（<code>.ndjson</code>）。</li>
+        <li>通过「文件」App、分享菜单或 Rulify 分享扩展，将报告导入 Rulify。</li>
+        <li>在「App」页查看已识别的 App 与域名；进入详情可生成规则。</li>
+        <li>在「设置」中选择导出格式、规则过滤与（可选）GitHub 仓库。</li>
+        <li>导出 <code>.list</code> / <code>.yaml</code> 规则文件，或推送至您自己的 GitHub 仓库。</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>常见问题</h2>
+      <ul>
+        <li><strong>导入很慢或文件很大？</strong>大型报告会在本地解析并写入 SQLite，请保持 App 在前台直至进度完成。</li>
+        <li><strong>没有生成 IP 规则？</strong>默认不生成 IP 规则（CDN 节点多为临时地址）。可在「设置 → 规则生成」中开启。</li>
+        <li><strong>GitHub 上传失败？</strong>请检查 Token 权限、仓库路径与分支名；Token 仅保存在本机钥匙串。</li>
+        <li><strong>如何删除数据？</strong>在 App 内「设置 → 清空本地数据」可删除本机全部报告、域名与规则。</li>
+        <li><strong>数据会上传到开发者服务器吗？</strong>不会。详见<a href="index.html">隐私政策</a>。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>联系我们</h2>
+      <p>
+        如遇 Bug、功能建议或使用问题，请发送邮件至
+        <a href="mailto:hi@oi.sb">hi@oi.sb</a>。
+        来信请说明 iOS 版本、Rulify 版本与问题步骤，我们会尽快回复。
+      </p>
+    </section>
+
+    <footer>
+      <p>最后更新：2026 年 6 月</p>
+    </footer>
+  </main>
+</body>
+</html>
