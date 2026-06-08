@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rulify 隐私政策 — 本地解析 iOS App 隐私报告并生成个人网络规则。">
+  <title>Rulify 隐私政策</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --accent: #0071e3;
+      --border: rgba(0, 0, 0, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card: #1c1c1e;
+        --text: #f5f5f7;
+        --muted: #98989d;
+        --border: rgba(255, 255, 255, 0.12);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    header {
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 0;
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    p, ul {
+      margin: 0;
+      font-size: 1rem;
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+    li + li { margin-top: 6px; }
+    footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Rulify 隐私政策</h1>
+      <p class="subtitle">本地解析 iOS App 隐私报告，生成个人网络规则</p>
+    </header>
+
+    <section>
+      <h2>概述</h2>
+      <p>
+        Rulify（「本 App」）用于在您的设备上解析 iOS App 隐私报告，整理 App 与域名信息，并生成个人网络规则。
+        核心功能默认在本地完成，无需注册账号，也不会向 Rulify 开发者运营的服务器上传您的隐私报告。
+      </p>
+    </section>
+
+    <section>
+      <h2>本地处理的数据</h2>
+      <p>
+        您主动导入的 .ndjson 隐私报告、解析得到的 App 列表、域名记录、生成的规则，以及您在 App 内的偏好设置，
+        均保存在本机 SQLite 数据库与缓存目录中。
+      </p>
+      <p style="margin-top: 12px;">
+        上述数据仅用于在本 App 内展示、搜索、导出与生成规则。您可在「设置 → 清空本地数据」中一次性删除。
+      </p>
+    </section>
+
+    <section>
+      <h2>可选的网络功能</h2>
+      <p>除以下由您触发或可在设置中关闭/不配置的功能外，本 App 不会主动联网：</p>
+      <ul>
+        <li><strong>App 名称与图标：</strong>为改善展示效果，可能向 Apple iTunes Lookup 接口查询 Bundle ID 对应的公开 App 信息，并缓存到本机。不会上传您的隐私报告内容。</li>
+        <li><strong>GitHub：</strong>仅在您于设置中填写仓库并保存 Personal Access Token 后，才会将您生成的规则文件推送至您指定的 GitHub 仓库。Token 保存在系统钥匙串，不会发送给 Rulify 开发者。</li>
+        <li><strong>规则同步：</strong>配置 GitHub 后，App 可能读取您仓库中已有规则文件路径，用于对比与展示，不会上传隐私报告。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>我们不做什么</h2>
+      <ul>
+        <li>不收集、不上传您的隐私报告原文至开发者服务器</li>
+        <li>不提供 Rulify 账号或云端同步服务</li>
+        <li>不嵌入第三方广告或行为追踪 SDK</li>
+        <li>不出售您的数据</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>文件导入与扩展</h2>
+      <p>
+        您可通过文件选择、系统分享菜单或 Share Extension 导入报告。
+        分享扩展与本 App 通过 App Group 在本地传递待导入文件，数据不会经由此路径上传至外部服务器。
+      </p>
+    </section>
+
+    <section>
+      <h2>您的隐私报告包含什么</h2>
+      <p>
+        隐私报告由 iOS 系统生成，其中可能包含您设备上 App 的 Bundle ID、访问域名、IP 地址及时间等信息。
+        请在分享、导出规则或推送至 GitHub 前，自行评估是否包含您不愿公开的内容。
+      </p>
+    </section>
+
+    <section>
+      <h2>联系我们</h2>
+      <p>
+        如对本隐私政策有疑问，请发送邮件至
+        <a href="hi@oi.sb">hi@oi.sb</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>最后更新：2026 年 6 月</p>
+    </footer>
+  </main>
+</body>
+</html>
