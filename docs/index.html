@@ -101,21 +101,34 @@
       <h2>本地处理的数据</h2>
       <p>
         您主动导入的 .ndjson 隐私报告、解析得到的 App 列表、域名记录、生成的规则，以及您在 App 内的偏好设置，
-        均保存在本机 SQLite 数据库与缓存目录中。
+        保存在本机的 SQLite 数据库、文件目录和系统偏好设置中。GitHub Token 单独保存在系统钥匙串中。
       </p>
       <p style="margin-top: 12px;">
-        上述数据仅用于在本 App 内展示、搜索、导出与生成规则。您可在「设置 → 清空本地数据」中一次性删除。
+        上述数据用于展示、搜索、生成与导出规则，以及您配置的 GitHub 功能。
       </p>
     </section>
 
     <section>
-      <h2>可选的网络功能</h2>
-      <p>除以下由您触发或可在设置中关闭/不配置的功能外，本 App 不会主动联网：</p>
+      <h2>网络功能与数据传输</h2>
+      <p>本 App 包含以下网络功能：</p>
       <ul>
-        <li><strong>App 名称与图标：</strong>为改善展示效果，可能向 Apple iTunes Lookup 接口查询 Bundle ID 对应的公开 App 信息，并缓存到本机。不会上传您的隐私报告内容。</li>
-        <li><strong>GitHub：</strong>仅在您于设置中填写仓库并保存 Personal Access Token 后，才会将您生成的规则文件推送至您指定的 GitHub 仓库。Token 保存在系统钥匙串，不会发送给 Rulify 开发者。</li>
-        <li><strong>规则同步：</strong>配置 GitHub 后，App 可能读取您仓库中已有规则文件路径，用于对比与展示，不会上传隐私报告。</li>
+        <li><strong>App 名称与图标：</strong>展示已导入的 App 列表、详情等页面时，如本地信息缺失或过期，会自动向 Apple iTunes Lookup 接口发送对应的 Bundle ID 和查询地区，并下载公开 App 图标。查询结果缓存在本机，当前没有单独关闭此查询的设置。此功能不发送报告原文、访问域名、IP 记录或访问时间。</li>
+        <li><strong>GitHub：</strong>配置仓库与 Personal Access Token 后，App 会按您的操作或已启用的自动上传设置，将生成的规则文件和提交说明发送至您指定的 GitHub 仓库。规则可能包含 App 名称、Bundle ID、域名及 IP/CIDR。公开仓库中的内容可被他人访问。</li>
+        <li><strong>仓库访问与认证：</strong>配置 GitHub 后，App 可验证连接、读取仓库路径和规则内容，用于对比与展示。Token 在本机钥匙串中保存，并在访问 GitHub API 时作为认证信息发送给 GitHub；不会发送给 Rulify 开发者。</li>
       </ul>
+      <p style="margin-top: 12px;">网络服务会收到建立连接所需的信息，例如网络 IP 地址。Apple 和 GitHub 对收到数据的处理分别受其隐私政策约束。</p>
+    </section>
+
+    <section>
+      <h2>删除与保留</h2>
+      <p>
+        「设置 → 清空本地数据」会删除数据库中的报告记录、App 列表、域名与规则，并清除 App 选择、导入状态和操作日志。
+        此操作不会删除导入文件副本、待导入文件、名称与图标缓存、其他偏好设置或 GitHub Token。
+      </p>
+      <p style="margin-top: 12px;">
+        您可在「设置 → GitHub → 清除 Token」中移除本机保存的令牌，并在 GitHub 撤销该令牌。
+        已导出、分享或上传到 GitHub 的内容须在对应保存位置或服务中另行管理；清空本地数据不会删除这些内容。
+      </p>
     </section>
 
     <section>
@@ -153,7 +166,7 @@
     </section>
 
     <footer>
-      <p>最后更新：2026 年 6 月</p>
+      <p>最后更新：2026 年 10 月 13 日</p>
     </footer>
   </main>
 </body>
